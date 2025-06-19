@@ -8,7 +8,8 @@ overlay_image_path = "tmp/screen.png"
 
 # === Load video and image ===
 video_clip = VideoFileClip(video_path).with_duration(1)
-overlay_image = ImageClip(overlay_image_path, duration=video_clip.duration)
+overlay_image = ImageClip(overlay_image_path, duration=0.5)
+overlay_image = overlay_image.with_start(0.3).with_end(0.5)
 img_h, img_w = overlay_image.get_frame(0).shape[:2]
 print(f"{(img_h, img_w)=}")
 vid_h, vid_w = video_clip.get_frame(0).shape[:2]
@@ -18,7 +19,8 @@ print(vid_w, new_height)
 # === Zoom and fade effect ===
 fade_duration = 0.5
 
-overlay_image = overlay_image.resized((vid_w, new_height)).with_position('center', 'center').without_mask()
+overlay_image = overlay_image.resized((vid_w, new_height)).with_position(('center', 'center'), relative=True).without_mask()
+overlay_image = overlay_image.with_position(lambda t: ('center', 50+100*t)) # move the image over time
 scale_t = lambda t: 0.7 + 3 * min(t, 0.1)
 overlay_image = overlay_image.transform(lambda get_frame, t: cv2.resize(get_frame(t), (int(scale_t(t) * vid_w), int(scale_t(t) * new_height))))
 

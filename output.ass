@@ -1,0 +1,33 @@
+[Script Info]
+Title: Word-by-Word ASS
+ScriptType: v4.00+
+PlayResX: 1280
+PlayResY: 720
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,36,&H0000FF00,&H00666666,&H00000000,&H00000000,-1,0,1,1,0,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:0:0.00,0:0:0.12,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k20}I {\k0}once {\k0}tried {\k0}yoga, {\k0}but {\k20}I {\k0}pulled {\k0}a {\k0}hamstring {\k0}reaching {\k0}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:0.12,0:0:0.28,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k20}once {\k0}tried {\k0}yoga, {\k0}but {\k0}I {\k0}pulled {\k0}a {\k0}hamstring {\k0}reaching {\k0}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:0.28,0:0:0.54,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k20}tried {\k0}yoga, {\k0}but {\k0}I {\k0}pulled {\k0}a {\k0}hamstring {\k0}reaching {\k0}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:0.54,0:0:0.90,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k0}tried {\k20}yoga, {\k0}but {\k0}I {\k0}pulled {\k0}a {\k0}hamstring {\k0}reaching {\k0}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:0.90,0:0:1.22,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I once tried yoga, but I pulled a hamstring reaching for a donut.
+Dialogue: 0,0:0:1.22,0:0:1.34,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k0}tried {\k0}yoga, {\k20}but {\k0}I {\k0}pulled {\k0}a {\k0}hamstring {\k0}reaching {\k0}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:1.34,0:0:1.42,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k20}I {\k0}once {\k0}tried {\k0}yoga, {\k0}but {\k20}I {\k0}pulled {\k0}a {\k0}hamstring {\k0}reaching {\k0}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:1.42,0:0:1.60,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k0}tried {\k0}yoga, {\k0}but {\k0}I {\k20}pulled {\k0}a {\k0}hamstring {\k0}reaching {\k0}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:1.60,0:0:1.76,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k0}tried {\k0}yoga, {\k0}but {\k0}I {\k0}pulled {\k20}a {\k0}hamstring {\k0}reaching {\k0}for {\k20}a {\k0}donut.
+Dialogue: 0,0:0:1.76,0:0:2.16,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k0}tried {\k0}yoga, {\k0}but {\k0}I {\k0}pulled {\k0}a {\k20}hamstring {\k0}reaching {\k0}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:2.16,0:0:2.40,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k0}tried {\k0}yoga, {\k0}but {\k0}I {\k0}pulled {\k0}a {\k0}hamstring {\k20}reaching {\k0}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:2.40,0:0:2.64,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k0}tried {\k0}yoga, {\k0}but {\k0}I {\k0}pulled {\k0}a {\k0}hamstring {\k0}reaching {\k20}for {\k0}a {\k0}donut.
+Dialogue: 0,0:0:2.64,0:0:2.74,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k0}tried {\k0}yoga, {\k0}but {\k0}I {\k0}pulled {\k20}a {\k0}hamstring {\k0}reaching {\k0}for {\k20}a {\k0}donut.
+Dialogue: 0,0:0:2.74,0:0:3.02,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}I {\k0}once {\k0}tried {\k0}yoga, {\k0}but {\k0}I {\k0}pulled {\k0}a {\k0}hamstring {\k0}reaching {\k0}for {\k0}a {\k20}donut.
+Dialogue: 0,0:0:3.58,0:0:3.74,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k20}Now {\k0}must {\k0}I {\k0}stay {\k0}away {\k0}from {\k0}that?
+Dialogue: 0,0:0:3.74,0:0:3.92,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}Now {\k20}must {\k0}I {\k0}stay {\k0}away {\k0}from {\k0}that?
+Dialogue: 0,0:0:3.92,0:0:4.16,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}Now {\k0}must {\k20}I {\k0}stay {\k0}away {\k0}from {\k0}that?
+Dialogue: 0,0:0:4.16,0:0:4.24,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}Now {\k0}must {\k0}I {\k20}stay {\k0}away {\k0}from {\k0}that?
+Dialogue: 0,0:0:4.24,0:0:4.36,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}Now {\k0}must {\k0}I {\k0}stay {\k20}away {\k0}from {\k0}that?
+Dialogue: 0,0:0:4.36,0:0:4.56,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}Now {\k0}must {\k0}I {\k0}stay {\k0}away {\k20}from {\k0}that?
+Dialogue: 0,0:0:4.56,0:0:4.72,Default,,0,0,0,,{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}{\k0}Now {\k0}must {\k0}I {\k0}stay {\k0}away {\k0}from {\k20}that?

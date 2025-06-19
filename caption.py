@@ -30,18 +30,63 @@ def extract_audio(video_path: str) -> VideoFileClip:
         exit()
 
 
+# def generate_subtitles() -> None:
+#     model = whisper.load_model("base")
+#     result = model.transcribe(audio=TEMP_FILE, fp16=False)
+#     segments = result["segments"]
+    
+#     with open(OUTPUT_SRT, "w", encoding="utf-8") as f: # Overwrite any existing SRT file
+#         for seg in segments:
+#             start = "0" + str(timedelta(seconds=int(seg["start"]))) + ",000"
+#             end = "0" + str(timedelta(seconds=int(seg["end"]))) + ",000"
+#             text = seg["text"].lstrip()
+#             f.write(f"{seg['id'] + 1}\n{start} --> {end}\n{text}\n\n")
+#     print("subtitles generated")
+
+def format_srt_timestamp(seconds: float) -> str:
+    td = timedelta(seconds=seconds)
+    total_seconds = int(td.total_seconds())
+    millis = int((td.total_seconds() - total_seconds) * 1000)
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+    secs = total_seconds % 60
+    return f"{hours:02}:{minutes:02}:{secs:02},{millis:03}"
+
 def generate_subtitles() -> None:
     model = whisper.load_model("base")
     result = model.transcribe(audio=TEMP_FILE, fp16=False)
     segments = result["segments"]
-    
-    with open(OUTPUT_SRT, "w", encoding="utf-8") as f: # Overwrite any existing SRT file
+
+    with open(OUTPUT_SRT, "w", encoding="utf-8") as f:
+        index = 1
         for seg in segments:
-            start = "0" + str(timedelta(seconds=int(seg["start"]))) + ",000"
-            end = "0" + str(timedelta(seconds=int(seg["end"]))) + ",000"
-            text = seg["text"].lstrip()
-            f.write(f"{seg['id'] + 1}\n{start} --> {end}\n{text}\n\n")
-    print("subtitles generated")
+            words = seg["text"].strip().split()
+            num_words = len(words)
+
+            if num_words == 0:
+                continue
+
+            # Chunk into 2–3 words per subtitle line
+            chunks = []
+            i = 0
+            while i < num_words:
+                chunk_size = min(3, max(2, num_words - i)) if num_words - i > 3 else num_words - i
+                chunks.append(words[i:i + chunk_size])
+                i += chunk_size
+
+            chunk_duration = (seg["end"] - seg["start"]) / len(chunks)
+            for i, chunk in enumerate(chunks):
+                chunk_start = seg["start"] + i * chunk_duration
+                chunk_end = chunk_start + chunk_duration
+
+                start_ts = format_srt_timestamp(chunk_start)
+                end_ts = format_srt_timestamp(chunk_end)
+                text = " ".join(chunk)
+
+                f.write(f"{index}\n{start_ts} --> {end_ts}\n{text}\n\n")
+                index += 1
+
+    print("chunked subtitles generated")
 
 OUTPUT_ASS = "output.ass"
 
@@ -73,30 +118,42 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
     with open(OUTPUT_ASS, "w", encoding="utf-8") as f:
         f.write(header)
-
         for seg in segments:
-            start_time = seg["start"]
-            end_time = seg["end"]
-            duration = end_time - start_time
-
-            start = to_ass_timestamp(start_time)
-            end = to_ass_timestamp(end_time)
-
-            # Words and timing
             words = seg["text"].strip().split()
             num_words = len(words)
-            word_duration_cs = int((duration / max(1, num_words)) * 100)  # centiseconds
+            if num_words == 0:
+                continue
 
-            # Build word-by-word highlight using \k
-            karaoke_line = ''.join([f"{{\\k{word_duration_cs}}}{w} " for w in words])
+            # Create chunks of 2–3 words
+            chunks = []
+            i = 0
+            while i < num_words:
+                remaining = num_words - i
+                chunk_size = 3 if remaining >= 3 else remaining
+                if remaining == 4:  # to avoid a lone word at the end
+                    chunk_size = 2
+                chunks.append(words[i:i + chunk_size])
+                i += chunk_size
 
-            # One-time pop-in for the entire line (from 70% to 100% over 500ms)
-            pop_in_prefix = r"{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}"
-            full_line = f"{pop_in_prefix}{karaoke_line.strip()}"
+            total_duration = seg["end"] - seg["start"]
+            chunk_duration = total_duration / len(chunks)
 
-            f.write(f"Dialogue: 0,{start},{end},Default,,0,0,0,,{full_line}\n")
+            for j, chunk in enumerate(chunks):
+                chunk_start = seg["start"] + j * chunk_duration
+                chunk_end = chunk_start + chunk_duration
 
-    print("ASS subtitles generated with karaoke highlighting and pop-in.")
+                start = to_ass_timestamp(chunk_start)
+                end = to_ass_timestamp(chunk_end)
+
+                word_duration_cs = int((chunk_duration / len(chunk)) * 100)  # centiseconds
+
+                karaoke_line = ''.join([f"{{\\k{word_duration_cs}}}{word} " for word in chunk])
+                pop_in_prefix = r"{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}"
+                full_line = f"{pop_in_prefix}{karaoke_line.strip()}"
+
+                f.write(f"Dialogue: 0,{start},{end},Default,,0,0,0,,{full_line}\n")
+
+    print("ASS subtitles generated with 2–3 word chunks, karaoke highlighting, and pop-in.")
 
 def burn_srt_into_video(video_path, srt_path, output_path):
     if not os.path.exists(video_path) or not os.path.exists(srt_path):
@@ -145,7 +202,7 @@ def main():
 
     video = extract_audio(args.video_path)
     #generate_subtitles()
-    generate_ass()
+    #generate_ass()
     #burn_srt_into_video(video_path=INPUT_VID, srt_path=OUTPUT_SRT, output_path=OUTPUT_VID)  #only INPUT VID should be passed in from other functions called captions.py
     burn_ass_into_video(video_path=INPUT_VID, ass_path="output.ass", output_path=OUTPUT_VID)
 

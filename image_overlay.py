@@ -82,16 +82,3 @@ class ImageOverlay:
     
     def return_clip(self):
         return self.clip
-
-
-if __name__ == "__main__":
-    # === Input files ===
-    video_path = "tmp/video.mp4"
-    overlay_image_path = "tmp/screen.png"
-
-    # === Load video and image ===
-    video_clip = VideoFileClip(video_path).with_duration(1)
-    overlay = ImageOverlay(video_clip, overlay_image_path).with_position(0.5, 0.3).with_horizontal_size(0.8).with_start_end(0.5, 0.8).return_clip_with_pop_in(pop_in_time=0.05, start_size=0.8)
-    final_clip = CompositeVideoClip([video_clip, overlay])
-    # === Export result ===
-    final_clip.write_videofile("tmp/output_video.mp4", codec="libx264")

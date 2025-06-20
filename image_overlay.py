@@ -12,7 +12,7 @@ class ImageOverlay:
         self._vid_w, self._vid_h = get_clip_initial_size(bg_video)
         print(f'{self._vid_w=}, {self._vid_h=}')
 
-        self.prop_x, self.prop_y = None, None # proportion of width/height that the CENTER of the image should be at
+        self.prop_x, self.prop_y = 0.5, 0.5 # proportion of width/height that the CENTER of the image should be at
         self.clip = ImageClip(image_path).without_mask()
         self.w, self.h = get_clip_initial_size(self.clip)
 
@@ -53,6 +53,35 @@ class ImageOverlay:
     def with_start_end(self, start_time, end_time):
         self.clip = self.clip.with_start(start_time).with_end(end_time)
         return self
+    
+    def _get_absolute_coords_size(self, prop_x, prop_y, size_w, size_h):
+        center_w = size_w // 2
+        center_h = size_h // 2
+        screen_x = int(self._vid_w * prop_x)
+        screen_y = int(self._vid_h * prop_y)
+        cx, cy = screen_x - center_w, screen_y - center_h
+        return cx, cy
+
+    # Return clip with a transition (at this point idk how we gonna keep track of stuff) =======================================
+
+    def return_clip_with_pop_in(self, pop_in_time=0.1, start_size=0.7):
+        scale_t = lambda t: start_size + ((1 - start_size) / pop_in_time) * min(t, pop_in_time)
+        get_size_t = lambda t: (int(scale_t(t) * self.w), int(scale_t(t) * self.h))
+        self.clip = self.clip.transform(lambda get_frame, t: cv2.resize(get_frame(t), get_size_t(t)))
+        self.clip = self.clip.with_position(lambda t: self._get_absolute_coords_size(self.prop_x, self.prop_y, *get_size_t(t)))
+        return self.clip # no more modifications allowed
+    
+    def return_clip_with_fade_in(self, fade_in_time=0.1, start_opacity=0.5):
+        opacity_t = lambda t: min(start_opacity + ((1 - start_opacity) / fade_in_time) * t, 1.0)
+        mask = VideoClip(
+            frame_function=lambda t: np.full((self._vid_h, self._vid_w), opacity_t(t), dtype=float),
+            duration=self.clip.duration
+        )
+        self.clip.mask = mask
+        return self.clip
+    
+    def return_clip(self):
+        return self.clip
 
 
 if __name__ == "__main__":
@@ -62,7 +91,7 @@ if __name__ == "__main__":
 
     # === Load video and image ===
     video_clip = VideoFileClip(video_path).with_duration(1)
-    overlay = ImageOverlay(video_clip, overlay_image_path).with_position(0.5, 0.5).with_horizontal_size(1).with_start_end(0, 1)
-    final_clip = CompositeVideoClip([video_clip, overlay.clip])
+    overlay = ImageOverlay(video_clip, overlay_image_path).with_position(0.5, 0.3).with_horizontal_size(0.8).with_start_end(0.5, 0.8).return_clip_with_pop_in(pop_in_time=0.05, start_size=0.8)
+    final_clip = CompositeVideoClip([video_clip, overlay])
     # === Export result ===
     final_clip.write_videofile("tmp/output_video.mp4", codec="libx264")

@@ -9,7 +9,7 @@ import random
 
 INPUT_VID = "griffin.mp4" 
 TEMP_FILE = "temp.mp3"          
-OUTPUT_SRT = "output.srt"
+OUTPUT_SRT = "input.srt"
 OUTPUT_VID = "output.mp4"
 # FONT_PATH = "C:/Windows/Fonts/arial.ttf"
 
@@ -176,31 +176,16 @@ def burn_srt_into_video(video_path, srt_path, output_path):
     print("Subtitle overlay complete. Output saved to:", output_path)
 
 def burn_ass_into_video(video_path, ass_path, output_path):
-    if not os.path.exists(video_path) or not os.path.exists(ass_path):
-        raise FileNotFoundError("Video or ASS file not found")
-
-    command = [
-        "ffmpeg",
-        "-i", video_path,
-        "-vf", f"ass={ass_path}",
-        "-c:a", "copy",
-        output_path
-    ]
-
-    process = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-    if process.returncode != 0:
-        print("Error:", process.stderr.decode())
-        raise RuntimeError("FFmpeg failed to burn ASS subtitles.")
-    print("ASS subtitle overlay complete. Output saved to:", output_path)
+    command = ["ffmpeg", "-i", video_path, "-vf", f"ass={ass_path}", "-c:a", "copy", output_path]
+    subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 def main():
-    import argparse
-    parser = argparse.ArgumentParser(description="Add captions to an mp4 using Whisper")
-    parser.add_argument("video_path", type=str, help="Path to the mp4 video")
-    args = parser.parse_args()
+    # import argparse
+    # parser = argparse.ArgumentParser(description="Add captions to an mp4 using Whisper")
+    # parser.add_argument("video_path", type=str, help="Path to the mp4 video")
+    # args = parser.parse_args()
 
-    video = extract_audio(args.video_path)
+    # video = extract_audio(args.video_path)
     #generate_subtitles()
     #generate_ass()
     #burn_srt_into_video(video_path=INPUT_VID, srt_path=OUTPUT_SRT, output_path=OUTPUT_VID)  #only INPUT VID should be passed in from other functions called captions.py

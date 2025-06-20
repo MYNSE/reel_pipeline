@@ -9,7 +9,7 @@ I <font color="#00ff00">once</font> tried yoga, but I pulled a hamstring reachin
 3
 00:00:00,280 --> 00:00:00,540
 I once <font color="#00ff00">tried</font> yoga, but I pulled a hamstring reaching for a donut.
-
+    
 4
 00:00:00,540 --> 00:00:00,900
 I once tried <font color="#00ff00">yoga,</font> but I pulled a hamstring reaching for a donut.

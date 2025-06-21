@@ -1,0 +1,84 @@
+1
+00:00:00,000 --> 00:00:00,120
+<font color="#00ff00">I</font> once tried yoga, but I pulled a hamstring reaching for a donut.
+
+2
+00:00:00,120 --> 00:00:00,280
+I <font color="#00ff00">once</font> tried yoga, but I pulled a hamstring reaching for a donut.
+
+3
+00:00:00,280 --> 00:00:00,540
+I once <font color="#00ff00">tried</font> yoga, but I pulled a hamstring reaching for a donut.
+
+4
+00:00:00,540 --> 00:00:00,900
+I once tried <font color="#00ff00">yoga,</font> but I pulled a hamstring reaching for a donut.
+
+5
+00:00:00,900 --> 00:00:01,220
+I once tried yoga, but I pulled a hamstring reaching for a donut.
+
+6
+00:00:01,220 --> 00:00:01,340
+I once tried yoga, <font color="#00ff00">but</font> I pulled a hamstring reaching for a donut.
+
+7
+00:00:01,340 --> 00:00:01,420
+I once tried yoga, but <font color="#00ff00">I</font> pulled a hamstring reaching for a donut.
+
+8
+00:00:01,420 --> 00:00:01,600
+I once tried yoga, but I <font color="#00ff00">pulled</font> a hamstring reaching for a donut.
+
+9
+00:00:01,600 --> 00:00:01,760
+I once tried yoga, but I pulled <font color="#00ff00">a</font> hamstring reaching for a donut.
+
+10
+00:00:01,760 --> 00:00:02,160
+I once tried yoga, but I pulled a <font color="#00ff00">hamstring</font> reaching for a donut.
+
+11
+00:00:02,160 --> 00:00:02,400
+I once tried yoga, but I pulled a hamstring <font color="#00ff00">reaching</font> for a donut.
+
+12
+00:00:02,400 --> 00:00:02,640
+I once tried yoga, but I pulled a hamstring reaching <font color="#00ff00">for</font> a donut.
+
+13
+00:00:02,640 --> 00:00:02,740
+I once tried yoga, but I pulled a hamstring reaching for <font color="#00ff00">a</font> donut.
+
+14
+00:00:02,740 --> 00:00:03,020
+I once tried yoga, but I pulled a hamstring reaching for a <font color="#00ff00">donut.</font>
+
+15
+00:00:03,580 --> 00:00:03,740
+<font color="#00ff00">Now</font> must I stay away from that?
+
+16
+00:00:03,740 --> 00:00:03,920
+Now <font color="#00ff00">must</font> I stay away from that?
+
+17
+00:00:03,920 --> 00:00:04,160
+Now must <font color="#00ff00">I</font> stay away from that?
+
+18
+00:00:04,160 --> 00:00:04,240
+Now must I <font color="#00ff00">stay</font> away from that?
+
+19
+00:00:04,240 --> 00:00:04,360
+Now must I stay <font color="#00ff00">away</font> from that?
+
+20
+00:00:04,360 --> 00:00:04,560
+Now must I stay away <font color="#00ff00">from</font> that?
+
+21
+00:00:04,560 --> 00:00:04,720
+Now must I stay away from <font color="#00ff00">that?</font>
+

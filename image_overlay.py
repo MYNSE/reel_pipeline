@@ -1,4 +1,4 @@
-from moviepy import VideoFileClip, ImageClip, CompositeVideoClip, VideoClip
+from moviepy import VideoFileClip, ImageClip, CompositeAudioClip, AudioFileClip, VideoClip
 import numpy as np
 import cv2
 
@@ -15,22 +15,35 @@ class ImageOverlay:
         self.prop_x, self.prop_y = 0.5, 0.5 # proportion of width/height that the CENTER of the image should be at
         self.clip = ImageClip(image_path).without_mask()
         self.w, self.h = get_clip_initial_size(self.clip)
+        self.start = 0
 
-    def with_scale(self, scale_factor):
-        self.w = int(self.w * scale_factor)
-        self.h = int(self.h * scale_factor)
+        if self.w > self._vid_w:
+            self = self.with_horizontal_size(1)
+        if self.h > self._vid_h:
+            self = self.with_vertical_size(1)
+
+    def _with_scale(self, scale_factor_x, scale_factor_y=None):
+        if not scale_factor_y:
+            scale_factor_y = scale_factor_x
+        self.w = int(self.w * scale_factor_x)
+        self.h = int(self.h * scale_factor_y)
         self.clip = self.clip.resized((self.w, self.h))
         return self.with_position(self.prop_x, self.prop_y) # redo position since it's relative to screen etc.
+    
+    def with_prop_scale(self, prop_screen_x, prop_screen_y):
+        sx = (self._vid_w * prop_screen_x) / self.w
+        sy = (self._vid_h * prop_screen_y) / self.h
+        return self._with_scale(sx, sy)
 
     def with_horizontal_size(self, proportion_of_screen):
         assert 0 <= proportion_of_screen <= 1, 'size must be a proportion 0-1'
         scale_factor =  (self._vid_w * proportion_of_screen) / self.w
-        return self.with_scale(scale_factor)
+        return self._with_scale(scale_factor)
     
     def with_vertical_size(self, proportion_of_screen):
         assert 0 <= proportion_of_screen <= 1, 'size must be a proportion 0-1'
         scale_factor =  self._vid_h * proportion_of_screen / self.h
-        return self.with_scale(scale_factor)
+        return self._with_scale(scale_factor)
     
     def _get_absolute_coords(self, prop_x, prop_y):
         assert 0 <= prop_x <= 1 and 0 <= prop_y <= 1, 'xy proportions must be 0-1'
@@ -46,12 +59,26 @@ class ImageOverlay:
         Get coords such that this imageclip will be at the center of the video.
         """
         cx, cy = self._get_absolute_coords(prop_x, prop_y)
+        print(f"{(cx, cy)=}")
         self.clip = self.clip.with_position((cx, cy))
         self.prop_x, self.prop_y = prop_x, prop_y
         return self
     
     def with_start_end(self, start_time, end_time):
         self.clip = self.clip.with_start(start_time).with_end(end_time)
+        return self
+    
+    def with_audio(self, path, duration=None, start=0):
+        """
+        Start is relative to clip start
+        """
+        audioclip = AudioFileClip(path)
+        if duration:
+            audioclip = audioclip.with_duration(duration)
+        if start is not None:
+            audioclip = audioclip.with_start(start + self.start)
+        new_audio_clip = CompositeAudioClip([audioclip])
+        self.clip.audio = new_audio_clip
         return self
     
     def _get_absolute_coords_size(self, prop_x, prop_y, size_w, size_h):
@@ -79,6 +106,11 @@ class ImageOverlay:
         )
         self.clip.mask = mask
         return self.clip
+    
+    def with_start_end(self, start_time, end_time):
+        self.start = start_time
+        self.clip = self.clip.with_start(start_time).with_end(end_time)
+        return self
     
     def return_clip(self):
         return self.clip

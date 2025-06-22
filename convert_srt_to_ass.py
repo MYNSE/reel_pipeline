@@ -24,7 +24,7 @@ Style: Default,Arial,16,&Hffffff,&Hffffff,&H0,&H0,0,0,0,0,100,100,0,0,1,1,0,2,10
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
 
-    with open("input.srt", "r", encoding="utf-8") as f:
+    with open("output.srt", "r", encoding="utf-8") as f:
         lines = f.read().strip().split("\n")
 
     ass_lines = []

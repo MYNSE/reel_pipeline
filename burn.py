@@ -9,7 +9,7 @@ import random
 
 INPUT_VID = "griffin.mp4" 
 TEMP_FILE = "temp.mp3"          
-OUTPUT_SRT = "input.srt"
+OUTPUT_SRT = "output.srt"
 OUTPUT_VID = "output.mp4"
 # FONT_PATH = "C:/Windows/Fonts/arial.ttf"
 

@@ -1,84 +1,84 @@
 1
 00:00:00,000 --> 00:00:00,120
-<font color="#00ff00">I</font> once tried yoga, but I pulled a hamstring reaching for a donut.
+{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}<font color="#00ff00">I</font> once
 
 2
 00:00:00,120 --> 00:00:00,280
-I <font color="#00ff00">once</font> tried yoga, but I pulled a hamstring reaching for a donut.
+I <font color="#00ff00">once</font>
 
 3
 00:00:00,280 --> 00:00:00,540
-I once <font color="#00ff00">tried</font> yoga, but I pulled a hamstring reaching for a donut.
+{\fscx80\fscy80\t(0,500,\fscx100\fscy100)}<font color="#00ff00">tried</font> yoga,
 
 4
 00:00:00,540 --> 00:00:00,900
-I once tried <font color="#00ff00">yoga,</font> but I pulled a hamstring reaching for a donut.
+tried <font color="#00ff00">yoga,</font>
 
 5
 00:00:00,900 --> 00:00:01,220
-I once tried yoga, but I pulled a hamstring reaching for a donut.
+{\fscx80\fscy80\t(0,500,\fscx100\fscy100)}but I
 
 6
 00:00:01,220 --> 00:00:01,340
-I once tried yoga, <font color="#00ff00">but</font> I pulled a hamstring reaching for a donut.
+<font color="#00ff00">but</font> I
 
 7
 00:00:01,340 --> 00:00:01,420
-I once tried yoga, but <font color="#00ff00">I</font> pulled a hamstring reaching for a donut.
+but <font color="#00ff00">I</font>
 
 8
 00:00:01,420 --> 00:00:01,600
-I once tried yoga, but I <font color="#00ff00">pulled</font> a hamstring reaching for a donut.
+{\fscx80\fscy80\t(0,500,\fscx100\fscy100)}<font color="#00ff00">pulled</font> a
 
 9
 00:00:01,600 --> 00:00:01,760
-I once tried yoga, but I pulled <font color="#00ff00">a</font> hamstring reaching for a donut.
+pulled <font color="#00ff00">a</font>
 
 10
 00:00:01,760 --> 00:00:02,160
-I once tried yoga, but I pulled a <font color="#00ff00">hamstring</font> reaching for a donut.
+{\fscx80\fscy80\t(0,500,\fscx100\fscy100)}<font color="#00ff00">hamstring</font> reaching
 
 11
 00:00:02,160 --> 00:00:02,400
-I once tried yoga, but I pulled a hamstring <font color="#00ff00">reaching</font> for a donut.
+hamstring <font color="#00ff00">reaching</font>
 
 12
 00:00:02,400 --> 00:00:02,640
-I once tried yoga, but I pulled a hamstring reaching <font color="#00ff00">for</font> a donut.
+{\fscx80\fscy80\t(0,500,\fscx100\fscy100)}<font color="#00ff00">for</font> a
 
 13
 00:00:02,640 --> 00:00:02,740
-I once tried yoga, but I pulled a hamstring reaching for <font color="#00ff00">a</font> donut.
+for <font color="#00ff00">a</font>
 
 14
 00:00:02,740 --> 00:00:03,020
-I once tried yoga, but I pulled a hamstring reaching for a <font color="#00ff00">donut.</font>
+{\fscx80\fscy80\t(0,500,\fscx100\fscy100)}<font color="#00ff00">donut.</font>
 
 15
 00:00:03,580 --> 00:00:03,740
-<font color="#00ff00">Now</font> must I stay away from that?
+{\fscx70\fscy70\t(0,500,\fscx100\fscy100)}<font color="#00ff00">Now</font> must
 
 16
 00:00:03,740 --> 00:00:03,920
-Now <font color="#00ff00">must</font> I stay away from that?
+Now <font color="#00ff00">must</font>
 
 17
 00:00:03,920 --> 00:00:04,160
-Now must <font color="#00ff00">I</font> stay away from that?
+{\fscx80\fscy80\t(0,500,\fscx100\fscy100)}<font color="#00ff00">I</font> stay
 
 18
 00:00:04,160 --> 00:00:04,240
-Now must I <font color="#00ff00">stay</font> away from that?
+I <font color="#00ff00">stay</font>
 
 19
 00:00:04,240 --> 00:00:04,360
-Now must I stay <font color="#00ff00">away</font> from that?
+{\fscx80\fscy80\t(0,500,\fscx100\fscy100)}<font color="#00ff00">away</font> from
 
 20
 00:00:04,360 --> 00:00:04,560
-Now must I stay away <font color="#00ff00">from</font> that?
+away <font color="#00ff00">from</font>
 
 21
 00:00:04,560 --> 00:00:04,720
-Now must I stay away from <font color="#00ff00">that?</font>
+{\fscx80\fscy80\t(0,500,\fscx100\fscy100)}<font color="#00ff00">that?</font>
 

@@ -1,6 +1,6 @@
 import re
 
-def convert_srt_to_ass_minimal_file():
+def convert_srt_to_ass(input_file='output.srt', output_file='output.ass'):
     def srt_time_to_ass(t: str) -> str:
         h, m, s_ms = t.split(":")
         s, ms = s_ms.split(",")
@@ -24,7 +24,7 @@ Style: Default,Arial,16,&Hffffff,&Hffffff,&H0,&H0,0,0,0,0,100,100,0,0,1,1,0,2,10
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
 
-    with open("output.srt", "r", encoding="utf-8") as f:
+    with open(input_file, "r", encoding="utf-8") as f:
         lines = f.read().strip().split("\n")
 
     ass_lines = []
@@ -40,7 +40,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         else:
             i += 1
 
-    with open("output.ass", "w", encoding="utf-8") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         f.write(header + "\n".join(ass_lines))
 
-convert_srt_to_ass_minimal_file()
+

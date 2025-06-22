@@ -1,9 +1,15 @@
 # reel_pipeline
+```
+pip install f5-tts moviepy
+```
 
-TODO
+Install ffmpeg
 
-- adjust position of overlay images
-- freely resize overlay images
-- freely change timestamps where images appear
-- add voice cloning to do tts scripts
-- add llm that can tell you what graphics are needed and put them automatically in the video
+# TTS
+- look at demos/f5_test.py
+- change basic.toml
+- eg. `python .\f5_test.py --config resources/f5/basic.toml`
+- If there are issues try CMD, just make sure ffmpeg can be found
+
+# Download reference audio with yt-dlp
+- `/yt-dlp.exe -t mp3 <url>`

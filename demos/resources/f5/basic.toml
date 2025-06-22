@@ -1,0 +1,11 @@
+# F5TTS_v1_Base | E2TTS_Base
+model = "F5TTS_v1_Base"
+ref_audio = "resources/f5/walter.mp3"
+# If an empty "", transcribes the reference audio automatically.
+ref_text = "Do you know how much I make a year? I mean, even if I told you, you wouldn't believe it. Do you know what would happen if I suddenly decided to stop going into work?"
+gen_text = "Jesse, you have to write unit tests before merging the PR to main! What did I tell you before?!"
+# File with text to generate. Ignores the text above.
+gen_file = ""
+remove_silence = false
+output_dir = "../tmp"
+output_file = "infer_cli_basic.wav"

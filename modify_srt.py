@@ -11,6 +11,7 @@ def chunk_srt(input_file='input.srt', output_file='output.srt', chunk_by = 3, st
 
             if line3.lstrip().startswith('<font color="'):
                 start = 0  # reset
+                buffer = False
     
             words = line3.strip().split()
             has_font = '<font color="' in line3
@@ -26,7 +27,17 @@ def chunk_srt(input_file='input.srt', output_file='output.srt', chunk_by = 3, st
             out_file.write(line2)
 
             transition_str = f"0,{transition_time}"
+            
+            """
+            \fade (intial alpha, mid alpha, final alpha, start fade in, end fade in/start fade out, end fade out)
+            
+            """
+            fade = True
+            #if fade:
+                #pop_in += f",255,255,255,0,0,{transition_time}" 
+            
             pop_in = rf"{{\fscx{start_scale}\fscy{start_scale}\t({transition_str},\fscx{end_scale}\fscy{end_scale})}}"
+            
 
             if (words.startswith('<font color="') or not has_font) and not buffer: 
                 buffer = True

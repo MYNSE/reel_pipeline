@@ -1,4 +1,4 @@
-import os, subprocess, whisper    # pip install openai-whisper moviepy        yt-dlp
+import subprocess,   # pip install openai-whisper moviepy        yt-dlp
 from moviepy import VideoFileClip
 
 def check_ffmpeg() -> bool:
@@ -11,7 +11,7 @@ def check_ffmpeg() -> bool:
 def extract_audio(video_path: str) -> VideoFileClip:
     video = VideoFileClip(video_path)
     if video.audio is not None:
-        video.audio.write_audiofile(TEMP_FILE, codec="mp3")
+        video.audio.write_audiofile("temp.mp3", codec="mp3")
         return video
     else:
         print("video has no audio")
